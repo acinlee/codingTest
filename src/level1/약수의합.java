@@ -1,3 +1,5 @@
+package level1;
+
 public class 약수의합 {
     public int solution(int n) {
         int answer = 0;

@@ -1,3 +1,5 @@
+package level1;
+
 import java.util.*;
 public class 자릿수더하기 {
     public int solution(int n) {

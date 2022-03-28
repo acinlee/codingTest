@@ -1,3 +1,5 @@
+package level1;
+
 public class 하샤드 {
     public boolean solution(int x) {
         boolean answer = true;

@@ -1,6 +1,9 @@
+import level1.문자열내p와y의개수;
+
 public class Main {
     public static void main(String[] args){
-        정수내림차순배치 a = new 정수내림차순배치();
-        a.solution(1924587);
+        문자열내p와y의개수 a = new 문자열내p와y의개수();
+        System.out.println(a.solution("pPoooY"));
+
     }
 }

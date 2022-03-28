@@ -1,3 +1,5 @@
+package level1;
+
 public class 소수찾기 {
     public int solution(int n) {
         /*  문제 풀이

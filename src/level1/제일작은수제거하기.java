@@ -1,3 +1,5 @@
+package level1;
+
 import java.util.ArrayList;
 
 public class 제일작은수제거하기 {

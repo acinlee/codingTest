@@ -1,3 +1,5 @@
+package level1;
+
 public class 이상한문자만들기 {
     public String solution(String s) {
         String answer = "";

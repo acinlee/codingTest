@@ -1,3 +1,5 @@
+package level1;
+
 public class 수박수박수박수 {
     public String solution(int n) {
         /*  문제 풀이

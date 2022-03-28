@@ -1,3 +1,5 @@
+package level1;
+
 public class 정수내림차순배치 {
     public long solution(long n) {
         long answer = 0;

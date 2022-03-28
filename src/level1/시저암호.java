@@ -1,3 +1,5 @@
+package level1;
+
 public class 시저암호 {
     public String solution(String s, int n) {
         /*  문제 풀이

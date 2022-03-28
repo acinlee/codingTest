@@ -1,3 +1,5 @@
+package level1;
+
 import java.util.ArrayList;
 
 public class 최소공배수최대공약수 {

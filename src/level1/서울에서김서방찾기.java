@@ -1,3 +1,5 @@
+package level1;
+
 public class 서울에서김서방찾기 {
     public String solution(String[] seoul) {
         String answer = "";

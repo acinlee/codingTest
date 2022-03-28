@@ -1,3 +1,5 @@
+package level1;
+
 public class 자연수뒤집어배열로만들기 {
     public int[] solution(long n) {
         /*  문제 풀이
