@@ -12,9 +12,9 @@ public class 소수찾기 {
             number[i] = i;
         }
 
-        for( int i=2; i<=n; i++) {
+        for( int i=2; (i*i)<=n; i++) {
             if(number[i]==0) continue;
-            for( int j=2*i; j<=n; j+=i ){
+            for( int j=i*i; j<=n; j+=i ){
                 number[j] = 0;
             }
         }
