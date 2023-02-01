@@ -12,29 +12,33 @@ public class N과M4 {
         int N = Integer.parseInt(st.nextToken(" "));
         int M = Integer.parseInt(st.nextToken(" "));
         int arr[] = new int[M];
-        boolean visit[] = new boolean[M];
 
-        dfs(N, M, 0, arr, visit);
+        dfs(N, M, 0, arr);
 
         br.close();
         bw.close();
     }
 
-    public static void dfs(int N, int M, int depth, int[] arr, boolean[] visit) throws IOException {
+    public static void dfs(int N, int M, int depth, int[] arr) throws IOException {
         if (depth == M) {
-            for (int a : arr) {
-                bw.write(a + " ");
+            boolean writeBoolean = true;
+            for (int i=0; i<arr.length-1; i++) {
+                if (arr[i]>(arr[i+1])) {
+                    writeBoolean = false;
+                    break;
+                }
             }
-            bw.write("\n");
+            if (writeBoolean) {
+                for (int a : arr) {
+                    bw.write(a + " ");
+                }
+                bw.write("\n");
+            }
+            return;
         }
-
         for (int i=0; i<N; i++) {
-            if (!visit[depth]) {
-                visit[depth] = true;
-                arr[depth] = i+1;
-                dfs(N, M, depth+1, arr, visit);
-                visit[depth] = false;
-            }
+            arr[depth] = i+1;
+            dfs(N, M,depth+1, arr);
         }
     }
 }
