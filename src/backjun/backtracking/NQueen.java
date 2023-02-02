@@ -15,7 +15,12 @@ public class NQueen {
         N = Integer.parseInt(st.nextToken());
         arr = new boolean[N][N];
 
-        dfs(0, 0,0);
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<N; j++) {
+                dfs(i, j,0);
+                arr = new boolean[N][N];
+            }
+        }
 
         bw.write(String.valueOf(count));
         br.close();
@@ -40,8 +45,8 @@ public class NQueen {
 
         for (int i=row; i<N; i++) {
             for (int j=col; j<N; j++) {
+                arr[i][j] = true;
                 if (i == row && j == col) {
-                    arr[i][j] = true;
                 } else if (i == row || j == col || Math.abs(row-col) == Math.abs(i-j) || Math.abs(row+col) == Math.abs(i+j)) {
                 } else {
                     arr[i][j] = true;
