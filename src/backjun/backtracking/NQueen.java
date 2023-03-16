@@ -4,55 +4,65 @@ import java.io.*;
 import java.util.*;
 
 public class NQueen {
+    private static int count;
     private static int N;
-    private static int count = 0;
-    private static boolean[][] arr;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        arr = new boolean[N][N];
 
-        for (int i=0; i<N; i++) {
-            for (int j=0; j<N; j++) {
-                dfs(i, j,0);
-                arr = new boolean[N][N];
-            }
-        }
+        N = Integer.parseInt(st.nextToken());
+        solveNQ();
 
         bw.write(String.valueOf(count));
         br.close();
         bw.close();
     }
 
-    private static void dfs(int row, int col, int depth) {
-        if (depth == N) {
-            int resultCount = 0;
-            for (int i=0; i<N; i++) {
-                for (int j = 0; j < N; j++) {
-                    if (arr[i][j]) {
-                        resultCount += 1;
-                    }
-                }
-            }
-            if (resultCount == N) {
-                count++;
-            }
-            return;
+    static boolean isSafe(int board[][], int row, int col) {
+        int i, j;
+
+        // Check this row on left side
+        for (i = 0; i < col; i++)
+            if (board[row][i] == 1)
+                return false;
+
+        // Check upper diagonal on left side
+        for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
+            if (board[i][j] == 1)
+                return false;
+
+        // Check lower diagonal on left side
+        for (i = row, j = col; j >= 0 && i < N; i++, j--) {
+            if (board[i][j] == 1) return false;
+        }
+        return true;
+    }
+
+    static boolean solveNQUtil(int board[][], int col) {
+        if (col == N) {
+            count++;
+            return false;
         }
 
-        for (int i=row; i<N; i++) {
-            for (int j=col; j<N; j++) {
-                arr[i][j] = true;
-                if (i == row && j == col) {
-                } else if (i == row || j == col || Math.abs(row-col) == Math.abs(i-j) || Math.abs(row+col) == Math.abs(i+j)) {
-                } else {
-                    arr[i][j] = true;
-                    dfs(i, j, depth+1);
-                    arr[i][j] = false;
-                }
+        for (int i = 0; i < N; i++) {
+            if (isSafe(board, i, col)) {
+                board[i][col] = 1;
+                if (solveNQUtil(board, col + 1))
+                    return true;
+                board[i][col] = 0;
+            }
+        }
+        return false;
+    }
+
+    static void solveNQ() {
+        int board[][] = new int[N][N];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                board[i][j] = 0;
             }
         }
     }
